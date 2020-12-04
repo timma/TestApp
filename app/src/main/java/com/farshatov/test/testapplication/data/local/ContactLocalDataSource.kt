@@ -48,10 +48,10 @@ class ContactLocalDataSource(private val context: Context,private val dispatcher
                     number = cursor.getString(numberIndex)
                     idString = cursor.getString(id)
                     number = number.replace(" ", "")
-                    if (!mobileNoSet.contains(number)) {
+                    if (!mobileNoSet.contains(idString)) {
                         val photo: Bitmap? = inputStream?.let { BitmapFactory.decodeStream(inputStream) }
                         contactList.add(Contact(idString, name, number, photo))
-                        mobileNoSet.add(number)
+                        mobileNoSet.add(idString)
                         Timber.d(
                                 "onCreaterrView  Phone Number: name = $name No = $number"
                         )
