@@ -39,7 +39,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline2"
-            app:srcCompat="@drawable/ic_baseline_tag_faces_24" />
+            app:imageURL="@{viewModel.photo}" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"

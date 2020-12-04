@@ -29,7 +29,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
-            app:srcCompat="@drawable/ic_baseline_tag_faces_24" />
+            app:imageURL="@{viewModel.photo}" />
+
 
         <LinearLayout
             android:layout_width="0dp"

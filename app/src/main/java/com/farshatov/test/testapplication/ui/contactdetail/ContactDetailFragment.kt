@@ -38,7 +38,9 @@ class ContactDetailFragment: Fragment() {
         arguments?.getString("name")?.let {
             viewModel.name.set(it)
         }
-
+        arguments?.getString("photo")?.let {
+            viewModel.photo.set(it)
+        }
     }
 
 }

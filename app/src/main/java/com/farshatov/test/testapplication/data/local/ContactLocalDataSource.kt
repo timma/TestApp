@@ -1,5 +1,6 @@
 package com.farshatov.test.testapplication.data.local
 
+import android.R
 import android.content.ContentResolver
 import android.content.ContentUris
 import android.content.Context
@@ -7,16 +8,15 @@ import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.provider.ContactsContract
-import com.farshatov.test.testapplication.data.ContactDataSource
 import com.farshatov.test.testapplication.data.Contact
+import com.farshatov.test.testapplication.data.ContactDataSource
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 import java.io.InputStream
 
 
-class ContactLocalDataSource(private val context: Context,private val dispatcher: CoroutineDispatcher): ContactDataSource{
+class ContactLocalDataSource(private val context: Context, private val dispatcher: CoroutineDispatcher): ContactDataSource{
 
     var contactList = arrayListOf<Contact>()
 
@@ -36,21 +36,21 @@ class ContactLocalDataSource(private val context: Context,private val dispatcher
                 val numberIndex: Int =
                     cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
                 val id: Int = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.CONTACT_ID)
-
-                val inputStream: InputStream? = ContactsContract.Contacts.openContactPhotoInputStream(context.contentResolver,
-                        ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, id.toLong()))
+                val idPhoto = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_URI)
 
                 var name: String
                 var number: String
                 var idString: String
+                var  image_uri: String?
                 while (cursor.moveToNext()) {
                     name = cursor.getString(nameIndex)
                     number = cursor.getString(numberIndex)
                     idString = cursor.getString(id)
                     number = number.replace(" ", "")
+                    image_uri = cursor.getString(idPhoto)
                     if (!mobileNoSet.contains(idString)) {
-                        val photo: Bitmap? = inputStream?.let { BitmapFactory.decodeStream(inputStream) }
-                        contactList.add(Contact(idString, name, number, photo))
+                         val uri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, id.toLong())
+                        contactList.add(Contact(idString, name, number, image_uri))
                         mobileNoSet.add(idString)
                         Timber.d(
                                 "onCreaterrView  Phone Number: name = $name No = $number"

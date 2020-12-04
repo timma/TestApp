@@ -24,6 +24,7 @@ class ContactDetailViewModel @ViewModelInject constructor(
 
     val name = ObservableField<String>()
 
+    val photo = ObservableField<String>()
 
 
     val itemViewModel = AsyncDiffObservableList(AsyncDifferConfig.Builder(object: DiffUtil.ItemCallback<ContactDetailItemViewModel>() {

@@ -1,6 +1,7 @@
 package com.farshatov.test.testapplication.data
 
 import android.graphics.Bitmap
+import android.net.Uri
 
 data class Contact(
     val id: String,
@@ -9,5 +10,6 @@ data class Contact(
 
     val phone: String,
 
-    val photo: Bitmap?
+    val photo: String?
+
 )

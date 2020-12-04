@@ -69,5 +69,5 @@ dependencies {
     implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:4.0.0'
     implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:4.0.0'
 
-
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }
