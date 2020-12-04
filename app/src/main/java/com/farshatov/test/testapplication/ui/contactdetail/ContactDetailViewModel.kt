@@ -1,6 +1,8 @@
 package com.farshatov.test.testapplication.ui.contactdetail
 
 import androidx.databinding.ObservableArrayList
+import androidx.databinding.ObservableField
+import androidx.databinding.ObservableList
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -19,6 +21,10 @@ import timber.log.Timber
 class ContactDetailViewModel @ViewModelInject constructor(
         private val contactDataSource: ContactDataSource
 ) : ViewModel() {
+
+    val name = ObservableField<String>()
+
+
 
     val itemViewModel = AsyncDiffObservableList(AsyncDifferConfig.Builder(object: DiffUtil.ItemCallback<ContactDetailItemViewModel>() {
         override fun areItemsTheSame(oldItem: ContactDetailItemViewModel, newItem: ContactDetailItemViewModel): Boolean {

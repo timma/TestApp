@@ -35,6 +35,10 @@ class ContactDetailFragment: Fragment() {
         arguments?.getString("key_contact")?.let {
            viewModel.refreshData(it)
         }
+        arguments?.getString("name")?.let {
+            viewModel.name.set(it)
+        }
+
     }
 
 }

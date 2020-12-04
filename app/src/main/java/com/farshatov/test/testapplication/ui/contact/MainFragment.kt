@@ -40,7 +40,10 @@ class MainFragment : Fragment(), OnItemClickListener {
     }
 
     override fun onItemClick(item: Contact?) {
-        val bundle = bundleOf("key_contact" to item?.id)
+        val bundle = bundleOf("key_contact" to item?.id,
+                    "name" to item?.name,
+                    "photo" to item?.photo
+                )
         findNavController().navigate(R.id.action_mainFragment_to_contactDetailFragment, bundle)
     }
 
